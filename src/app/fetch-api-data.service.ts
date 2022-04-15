@@ -98,7 +98,7 @@ export class UserRegistrationService {
 
      deleteUser(user:string): Observable<any> {
         const token = localStorage.getItem('token');
-        return this.http.delete<string>(apiUrl + '/users/'+user, {headers: new HttpHeaders(
+        return this.http.delete<string>(apiUrl + 'users/'+user, {headers: new HttpHeaders(
           {
             Authorization: 'Bearer ' + token,
           })}).pipe(
@@ -108,7 +108,7 @@ export class UserRegistrationService {
 
      updateUser(user:object): Observable<any> {
         const token = localStorage.getItem('token');
-        return this.http.put<object>(apiUrl + 'users'+user,{}, {headers: new HttpHeaders(
+        return this.http.put<object>(apiUrl + 'users/'+user,{}, {headers: new HttpHeaders(
           {
             Authorization: 'Bearer ' + token,
           })}).pipe(
