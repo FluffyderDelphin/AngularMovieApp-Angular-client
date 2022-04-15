@@ -115,6 +115,17 @@ export class UserRegistrationService {
           catchError(this.handleError)
         );
       }
+
+      getUserData(username:string): Observable<any> {
+        const token = localStorage.getItem('token');
+        return this.http.get<object>(apiUrl + 'users/'+username, {headers: new HttpHeaders(
+          {
+            Authorization: 'Bearer ' + token,
+          })}).pipe(
+          catchError(this.handleError)
+        );
+      }
+ 
     
     loginUser(credentials:any): Observable<any> {
         const token = localStorage.getItem('token');
