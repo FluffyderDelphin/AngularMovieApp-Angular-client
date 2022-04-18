@@ -12,7 +12,7 @@ const apiUrl ='https://alexandersmovieapp.herokuapp.com/';
 
 
 
-export class UserRegistrationService {
+export class FetchApiDataService {
 
   constructor(private http: HttpClient) {}
     public userRegistration(userDetails: any): Observable<any> {
