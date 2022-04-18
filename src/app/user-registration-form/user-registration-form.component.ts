@@ -1,7 +1,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 
 
-import {FetchApiDataService } from '../fetch-api-data.service';
+import {FetchApiDataService} from '../fetch-api-data.service';
 
 
 
@@ -25,13 +25,13 @@ export class UserRegistrationFormComponent implements OnInit {
   ngOnInit(): void {
   }
   registerUser(): void {
-    this.fetchApiData.userRegistration(this.userData).subscribe((result) => {
+    this.fetchApiData.userRegistration(this.userData).subscribe((result:any) => {
 
      this.dialogRef.close(); 
      this.snackBar.open(result, 'OK', {
         duration: 2000
      });
-    }, (result) => {
+    }, (result:any) => {
       this.snackBar.open(result, 'OK', {
         duration: 2000
       });
