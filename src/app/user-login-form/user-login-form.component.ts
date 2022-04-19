@@ -20,7 +20,9 @@ export class UserLoginFormComponent implements OnInit {
 loginUser():void{
   this.fetchApiData.loginUser(this.userData).subscribe((result:any) => {
 
+
     this.dialogRef.close(); 
+    console.log(result);
     this.snackBar.open(result, 'OK', {
        duration: 2000
     });

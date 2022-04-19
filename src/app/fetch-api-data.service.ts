@@ -21,7 +21,7 @@ export class FetchApiDataService {
       catchError(this.handleError)
       );
       }
-
+      
       private handleError(error: HttpErrorResponse): any {
         if (error.error instanceof ErrorEvent) {
         console.error('Some error occurred:', error.error.message);
@@ -129,11 +129,8 @@ export class FetchApiDataService {
  
     
     loginUser(credentials:any): Observable<any> {
-        const token = localStorage.getItem('token');
-        return this.http.post(apiUrl + 'login',credentials, {headers: new HttpHeaders(
-          {
-            Authorization: 'Bearer ' + token,
-          })}).pipe(
+
+        return this.http.post(apiUrl + 'login',credentials,{}).pipe(
           catchError(this.handleError)
         );
       }
