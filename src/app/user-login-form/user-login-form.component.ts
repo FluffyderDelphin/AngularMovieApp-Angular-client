@@ -22,7 +22,9 @@ loginUser():void{
 
 
     this.dialogRef.close(); 
-    console.log(result);
+    console.log(result.user);
+    localStorage.setItem('user',result.user);
+    localStorage.setItem('token',result.token);
     this.snackBar.open(result, 'OK', {
        duration: 2000
     });
