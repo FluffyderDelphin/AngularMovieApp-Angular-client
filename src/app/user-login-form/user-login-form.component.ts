@@ -10,7 +10,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./user-login-form.component.scss']
 })
 export class UserLoginFormComponent implements OnInit {
- @Input() userData={Username:'',Password:''}
+ @Input() userData={username:'',password:''}
   constructor( public fetchApiData:FetchApiDataService,
     public dialogRef:MatDialogRef<UserLoginFormComponent>,
     public snackBar: MatSnackBar) { }
