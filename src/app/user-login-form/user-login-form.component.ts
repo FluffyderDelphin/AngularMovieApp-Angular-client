@@ -23,13 +23,13 @@ loginUser():void{
 
     this.dialogRef.close(); 
     console.log(result.user);
-    localStorage.setItem('user',result.user);
+    localStorage.setItem('user',JSON.stringify(result.user));
     localStorage.setItem('token',result.token);
-    this.snackBar.open(result, 'OK', {
+    this.snackBar.open(`Welcome ${result.user.username} !`, 'OK', {
        duration: 2000
     });
    }, (result:any) => {
-     this.snackBar.open(result, 'OK', {
+     this.snackBar.open('Login unsucessful', 'OK', {
        duration: 2000
      });
    });
