@@ -2,6 +2,7 @@ import { Component, OnInit,Input} from '@angular/core';
 import {FetchApiDataService} from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,8 @@ export class UserLoginFormComponent implements OnInit {
  @Input() userData={username:'',password:''}
   constructor( public fetchApiData:FetchApiDataService,
     public dialogRef:MatDialogRef<UserLoginFormComponent>,
-    public snackBar: MatSnackBar) { }
+    public snackBar: MatSnackBar,
+    public router:Router) { }
 
   ngOnInit(): void {
   }
@@ -22,6 +24,7 @@ loginUser():void{
 
 
     this.dialogRef.close(); 
+    this.router.navigate(['movies']);
     console.log(result.user);
     localStorage.setItem('user',JSON.stringify(result.user));
     localStorage.setItem('token',result.token);
