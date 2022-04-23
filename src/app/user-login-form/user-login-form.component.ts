@@ -11,7 +11,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-login-form.component.scss']
 })
 export class UserLoginFormComponent implements OnInit {
+
+
  @Input() userData={username:'',password:''}
+
+ 
   constructor( public fetchApiData:FetchApiDataService,
     public dialogRef:MatDialogRef<UserLoginFormComponent>,
     public snackBar: MatSnackBar,
@@ -24,13 +28,14 @@ loginUser():void{
 
 
     this.dialogRef.close(); 
-    this.router.navigate(['movies']);
+ 
     console.log(result.user);
     localStorage.setItem('user',JSON.stringify(result.user));
     localStorage.setItem('token',result.token);
     this.snackBar.open(`Welcome ${result.user.username} !`, 'OK', {
        duration: 2000
     });
+    this.router.navigate(['movies']);
    }, (result:any) => {
      this.snackBar.open('Login unsucessful', 'OK', {
        duration: 2000

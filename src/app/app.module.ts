@@ -25,10 +25,15 @@ import { UserLoginFormComponent } from './user-login-form/user-login-form.compon
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { ProfileViewComponent } from './profile-view/profile-view.component';
+import { UserUpdateComponent } from './user-update/user-update.component';
+import { MovieSummaryComponent } from './movie-summary/movie-summary.component';
+import { MovieDirectorViewComponent } from './movie-director-view/movie-director-view.component';
+import { MovieGenreViewComponent } from './movie-genre-view/movie-genre-view.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
+  { path: 'profile', component: ProfileViewComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
@@ -40,6 +45,10 @@ const appRoutes: Routes = [
     MovieCardComponent,
     WelcomePageComponent,
     ProfileViewComponent,
+    UserUpdateComponent,
+    MovieSummaryComponent,
+    MovieDirectorViewComponent,
+    MovieGenreViewComponent,
   
   ],
   imports: [
