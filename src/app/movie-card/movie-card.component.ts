@@ -44,7 +44,6 @@ getSummary(movieID:any): void {
 
 getmovieDirector(movieID:any):void{
   let movie = this.movies.find(m=>{return m._id === movieID})
-  console.log(movie.director);
   this.dialog.open(MovieDirectorViewComponent, {
     data: {
      name:movie.director.name,
@@ -53,6 +52,19 @@ getmovieDirector(movieID:any):void{
      death:movie.director.death
     },
     width: '500px',
+    backdropClass: 'backdropBackground'
+  });
+}
+
+getmovieGenre(movieID:any):void{
+  let movie = this.movies.find(m=>{return m._id === movieID})
+  console.log(movie.genre)
+  this.dialog.open(MovieDirectorViewComponent, {
+    data: {
+    name:movie.genre.name,
+    description:movie.genre.description
+    },
+    width: '600px',
     backdropClass: 'backdropBackground'
   });
 }

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
   selector: 'app-movie-genre-view',
   templateUrl: './movie-genre-view.component.html',
@@ -7,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieGenreViewComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(@Inject(MAT_DIALOG_DATA)
+  public genre:{
+    name:string,
+    description:string,
+  }) { }
   ngOnInit(): void {
   }
 
