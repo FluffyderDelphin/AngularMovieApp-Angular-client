@@ -1,7 +1,7 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  align-items: center;
   color: white;
   background-color: #4294f2;
   padding: 1.2rem 2rem;
@@ -9,5 +9,11 @@
 
 .listitem {
   color: #fff;
+}
+
+.viewList {
+  display: flex;
+  list-style: none;
+  gap: 10px;
 }
 /*# sourceMappingURL=navbar.component.css.map */
