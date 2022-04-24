@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Inject, Input, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-movie-summary',
@@ -7,14 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./movie-summary.component.scss']
 })
 export class MovieSummaryComponent implements OnInit {
-   movie:any;
-  constructor(public router:Router) {
-    this.movie = this.router.getCurrentNavigation()?.extras.state;
+ 
+  constructor(@Inject(MAT_DIALOG_DATA)
+  public movie:{
+    title:string,
+    imageurl:any,
+    description:string
+  }) {
+
    }
 
   ngOnInit(): void {
   }
-onBackClick():void{
-this.router.navigate(['movies']);
-}
+
 }
