@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FetchApiDataService } from '../fetch-api-data.service';
 @Component({
   selector: 'app-movie-card',
@@ -8,7 +9,7 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 export class MovieCardComponent implements OnInit {
 movies: any[]=[];
 
-  constructor(public fetchApiData:FetchApiDataService) { }
+  constructor(public fetchApiData:FetchApiDataService,public router:Router) { }
 
   ngOnInit(): void {
     this.getMovies();
@@ -21,4 +22,11 @@ movies: any[]=[];
     console.log(this.movies);
     return this.movies;
   });
-}}
+}
+getSummary(movieID:any):void{
+  this.router.navigate([`movies/${movieID}`],{state:this.movies.find(m=>{return m._id === movieID})})
+}
+
+
+
+}

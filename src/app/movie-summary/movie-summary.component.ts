@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-summary',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movie-summary.component.scss']
 })
 export class MovieSummaryComponent implements OnInit {
-
-  constructor() { }
+   movie:any;
+  constructor(public router:Router) {
+    this.movie = this.router.getCurrentNavigation()?.extras.state;
+   }
 
   ngOnInit(): void {
   }
-
+onBackClick():void{
+this.router.navigate(['movies']);
+}
 }
