@@ -1,2 +1,2 @@
-.navbar{display:flex;justify-content:space-between;gap:1rem;color:#fff;background-color:#4294f2;padding:1.2rem 2rem}.listitem{color:#fff}.viewList{display:flex;list-style:none;gap:10px}
+.navbar{color:#fff;background-color:#4294f2;padding:1.2rem 2rem}.listitem{color:#fff}.viewList{display:flex;list-style:none;gap:10px}.container{max-width:750px;display:flex;justify-content:space-between;align-items:center;margin:0 auto}
 /*# sourceMappingURL=navbar.component.min.css.map */

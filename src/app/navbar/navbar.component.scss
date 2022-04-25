@@ -1,10 +1,8 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
     color: white;
     background-color: #4294f2;
     padding: 1.2rem 2rem;
+
 
   }
   .listitem{
@@ -15,3 +13,10 @@
       list-style: none;
       gap: 10px;
   }
+.container {
+    max-width: 750px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
