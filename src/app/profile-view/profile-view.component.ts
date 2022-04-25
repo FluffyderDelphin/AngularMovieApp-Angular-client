@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { UserUpdateComponent } from '../user-update/user-update.component';
 
 @Component({
   selector: 'app-profile-view',
@@ -8,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class ProfileViewComponent implements OnInit {
    string:any = localStorage.getItem('user');
    user:any = JSON.parse(this.string);
-  constructor() { }
+   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
-
+ openUserUpdateDialog():void{
+   this.dialog.open(UserUpdateComponent,{
+     width:'300px'
+   })
+ }
 }
