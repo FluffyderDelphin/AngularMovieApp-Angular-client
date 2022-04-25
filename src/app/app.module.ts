@@ -30,6 +30,7 @@ import { MovieSummaryComponent } from './movie-summary/movie-summary.component';
 import { MovieDirectorViewComponent } from './movie-director-view/movie-director-view.component';
 import { MovieGenreViewComponent } from './movie-genre-view/movie-genre-view.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { MovieUserFavoriteComponent } from './movie-user-favorite/movie-user-favorite.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -52,6 +53,7 @@ const appRoutes: Routes = [
     MovieDirectorViewComponent,
     MovieGenreViewComponent,
     NavbarComponent,
+    MovieUserFavoriteComponent,
   
   ],
   imports: [
