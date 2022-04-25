@@ -4,6 +4,7 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MovieSummaryComponent } from '../movie-summary/movie-summary.component';
 import { MovieDirectorViewComponent } from '../movie-director-view/movie-director-view.component';
+import { MovieGenreViewComponent } from '../movie-genre-view/movie-genre-view.component';
 
 @Component({
   selector: 'app-movie-card',
@@ -59,7 +60,7 @@ getmovieDirector(movieID:any):void{
 getmovieGenre(movieID:any):void{
   let movie = this.movies.find(m=>{return m._id === movieID})
   console.log(movie.genre)
-  this.dialog.open(MovieDirectorViewComponent, {
+  this.dialog.open(MovieGenreViewComponent, {
     data: {
     name:movie.genre.name,
     description:movie.genre.description

@@ -16,21 +16,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-update.component.scss']
 })
 export class UserUpdateComponent implements OnInit {
+  string:any = localStorage.getItem('user');
+  user:any = JSON.parse(this.string);
   @Input() userData = {username:'',password:'',email:'',birthday:new Date()}
   constructor(
     public fetchApiData:FetchApiDataService,
     public dialogRef:MatDialogRef<UserUpdateComponent>,
     public snackBar: MatSnackBar,
-    public router: Router) { }
+    public router: Router,
+    ) { }
   
   ngOnInit(): void {
   }
 
  updateUser(): void {
-    this.fetchApiData.updateUser(this.userData).subscribe((result:any) => {
+    this.fetchApiData.updateUser(this.user.username,this.userData).subscribe((result:any) => {
    
      this.dialogRef.close(); 
-     this.snackBar.open(`${result.usere.username} sucessfully updated Please Login.`, 'OK', {
+     this.snackBar.open(`${result.user.username} sucessfully updated Please Login.`, 'OK', {
         duration: 2000
      });
      localStorage.clear();
