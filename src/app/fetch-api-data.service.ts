@@ -77,7 +77,7 @@ export class FetchApiDataService {
         
     removeFavMovie(user:string,movie:string): Observable<any> {
         const token = localStorage.getItem('token');
-        return this.http.put<object>(apiUrl + 'users/'+user+'/favorites/remove/'+movie, {headers: new HttpHeaders(
+        return this.http.put<object>(apiUrl + 'users/'+user+'/favorites/remove/'+movie,{}, {headers: new HttpHeaders(
           {
             Authorization: 'Bearer ' + token,
           })}).pipe(

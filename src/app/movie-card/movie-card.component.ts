@@ -16,7 +16,6 @@ export class MovieCardComponent implements OnInit {
 movies: any[]=[];
 string:any = localStorage.getItem('user');
 user:any = JSON.parse(this.string);
-favMoviesList: any[]=[];
 
   constructor(
     public fetchApiData:FetchApiDataService,
@@ -27,7 +26,7 @@ favMoviesList: any[]=[];
 
   ngOnInit(): void {
     this.getMovies();
-    this.setFavouriteMoviesList();
+  
   }
 
   getMovies():void
@@ -80,18 +79,13 @@ getmovieGenre(movieID:any):void{
   });
 }
 
-setFavouriteMoviesList():any{
-  this.favMoviesList = this.movies.filter((m:any)=>{
-    return this.user.favMovies.includes(m._id)
-  })
-   console.log(this.favMoviesList)
-  return this.favMoviesList
-}
+
 
 addFavMovie(movieID:string):void{
 this.fetchApiData.addFavMovie(this.user.username,movieID).subscribe((result:any)=>{
   localStorage.setItem('user',JSON.stringify(result));
-  this.setFavouriteMoviesList();
+  this.user= result;
+
   this.snackBar.open('Movie was added to Favorites','OK',{duration:3000})
 })
 
@@ -102,16 +96,19 @@ this.fetchApiData.addFavMovie(this.user.username,movieID).subscribe((result:any)
 removeFavMovie(movieID:string):void{
   this.fetchApiData.removeFavMovie(this.user.username,movieID).subscribe((result:any)=>{
     localStorage.setItem('user',JSON.stringify(result));
-    this.setFavouriteMoviesList();
-    this.snackBar.open('Movie was added to Favorites','OK',{duration:3000})
+    this.user= result;
+    this.snackBar.open('Movie was removed from  Favorites','OK',{duration:3000})
   })
 
-// favToggle(movie:any):void{
-//  this.favStatus(movie._id)
-//  ? this.removeFav(movie._id,movie.title)
-//  : this.addFav(movie._id,movie.title)
-// }
+ 
+
+
 }
+
+favStatus(movieID:string):void{
+    return this.user.favMovies.includes(movieID);
+}
+
 
 
 }

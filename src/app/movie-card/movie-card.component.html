@@ -28,12 +28,21 @@
             >
                 Summary
             </button>
-            <button mat-icon-butto (click)="addFavMovie(movie._id)">
-            <mat-icon >favorite_border</mat-icon>
-        </button>
+
+
+
+            <div *ngIf="favStatus(movie._id); then thenBlock else elseBlock"></div>
+      
+    <ng-template #thenBlock>
         <button mat-icon-butto (click)="removeFavMovie(movie._id)">
             <mat-icon >favorite</mat-icon>
         </button>
+    </ng-template>
+    <ng-template #elseBlock>
+        <button mat-icon-butto (click)="addFavMovie(movie._id)">
+        <mat-icon >favorite_border</mat-icon>
+    </button>
+</ng-template>
         </mat-card-actions>
     </mat-card>
 </div>
