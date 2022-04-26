@@ -11,15 +11,42 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./profile-view.component.scss']
 })
 export class ProfileViewComponent implements OnInit {
+   movies:any[]=[]
    string:any = localStorage.getItem('user');
    user:any = JSON.parse(this.string);
+   favMovies:any[]=[];
    constructor(public dialog: MatDialog,
     public router:Router,
     public fetchApiData:FetchApiDataService,    
     public snackBar: MatSnackBar) { }
 
-  ngOnInit(): void {
+
+    ngOnInit(): void {
+      this.getMovies();
+      this.setFavoritesList();
+    
+    }
+  
+    getMovies():void
+  {
+    this.fetchApiData.getAllMovies().subscribe((resp: any) => {
+      this.movies = resp;
+      console.log(this.movies);
+      return this.movies;
+
+    });
   }
+
+  setFavoritesList():any{
+    this.favMovies = this.movies.filter((m)=>
+   {    return this.user.favMovies.includes(m._id)
+  })
+  console.log(this.favMovies);
+  return this.favMovies;
+  }
+
+
+
  openUserUpdateDialog():void{
    this.dialog.open(UserUpdateComponent,{
      width:'300px'
