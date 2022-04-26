@@ -88,18 +88,30 @@ setFavouriteMoviesList():any{
   return this.favMoviesList
 }
 
-addFavMovie(username:string,movieID:string):void{
-this.fetchApiData.addFavMovie(username,movieID).subscribe((result:any)=>{
+addFavMovie(movieID:string):void{
+this.fetchApiData.addFavMovie(this.user.username,movieID).subscribe((result:any)=>{
   localStorage.setItem('user',JSON.stringify(result));
+  this.setFavouriteMoviesList();
   this.snackBar.open('Movie was added to Favorites','OK',{duration:3000})
 })
+
+
+
 }
 
+removeFavMovie(movieID:string):void{
+  this.fetchApiData.removeFavMovie(this.user.username,movieID).subscribe((result:any)=>{
+    localStorage.setItem('user',JSON.stringify(result));
+    this.setFavouriteMoviesList();
+    this.snackBar.open('Movie was added to Favorites','OK',{duration:3000})
+  })
 
 // favToggle(movie:any):void{
 //  this.favStatus(movie._id)
 //  ? this.removeFav(movie._id,movie.title)
 //  : this.addFav(movie._id,movie.title)
 // }
+}
+
 
 }
