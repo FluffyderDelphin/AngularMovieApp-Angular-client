@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MovieSummaryComponent } from '../movie-summary/movie-summary.component';
 import { MovieDirectorViewComponent } from '../movie-director-view/movie-director-view.component';
 import { MovieGenreViewComponent } from '../movie-genre-view/movie-genre-view.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-movie-card',
@@ -13,11 +14,20 @@ import { MovieGenreViewComponent } from '../movie-genre-view/movie-genre-view.co
 })
 export class MovieCardComponent implements OnInit {
 movies: any[]=[];
+string:any = localStorage.getItem('user');
+user:any = JSON.parse(this.string);
+favMoviesList: any[]=[];
 
-  constructor(public fetchApiData:FetchApiDataService,public router:Router, public dialog: MatDialog,) { }
+  constructor(
+    public fetchApiData:FetchApiDataService,
+    public router:Router, 
+    public dialog: MatDialog,
+    public snackBar:MatSnackBar,
+    ) { }
 
   ngOnInit(): void {
     this.getMovies();
+    this.setFavouriteMoviesList();
   }
 
   getMovies():void
@@ -69,5 +79,27 @@ getmovieGenre(movieID:any):void{
     backdropClass: 'backdropBackground'
   });
 }
+
+setFavouriteMoviesList():any{
+  this.favMoviesList = this.movies.filter((m:any)=>{
+    return this.user.favMovies.includes(m._id)
+  })
+   console.log(this.favMoviesList)
+  return this.favMoviesList
+}
+
+addFavMovie(username:string,movieID:string):void{
+this.fetchApiData.addFavMovie(username,movieID).subscribe((result:any)=>{
+  localStorage.setItem('user',JSON.stringify(result));
+  this.snackBar.open('Movie was added to Favorites','OK',{duration:3000})
+})
+}
+
+
+// favToggle(movie:any):void{
+//  this.favStatus(movie._id)
+//  ? this.removeFav(movie._id,movie.title)
+//  : this.addFav(movie._id,movie.title)
+// }
 
 }
