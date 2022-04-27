@@ -14,16 +14,17 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./movie-card.component.scss']
 })
 export class MovieCardComponent implements OnInit {
-movies: any[]=[];
-string:any = localStorage.getItem('user');
-user:any = JSON.parse(this.string);
+
+  @Input() movie: any
+  @Input() favStatus: any
+  @Input() addFavMovie: any
+  @Input() removeFavMovie: any
 
   constructor(
     public fetchApiData:FetchApiDataService,
     public router:Router, 
     public dialog: MatDialog,
     public snackBar:MatSnackBar,
-    public Input: Input
     ) { }
 
   ngOnInit(): void {
@@ -31,10 +32,7 @@ user:any = JSON.parse(this.string);
   
   }
 
-  @Input() movie: any
-  @Input() favStatus: any
-  @Input() addFavMovie: any
-  @Input() removeFavMovie: any
+
 
 getmovieDirector(movieID:any):void{
   let movie = this.movies.find(m=>{return m._id === movieID})
