@@ -26,10 +26,9 @@ export class MainViewComponent implements OnInit {
   
     ngOnInit(): void {
       this.getMovies();
-      this.getMovies = this.getMovies.bind(this);
+    
       this.addFavMovie= this.addFavMovie.bind(this);
       this.removeFavMovie= this.removeFavMovie.bind(this);
-      this.favStatus= this.favStatus.bind(this);
     
 
     }
