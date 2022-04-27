@@ -28,55 +28,14 @@ export class MainViewComponent implements OnInit {
       ) { }
   
     ngOnInit(): void {
-      this.getMovies();
+      this.movieCardService.getMovies()
     
-      this.addFavMovie= this.addFavMovie.bind(this);
-      this.removeFavMovie= this.removeFavMovie.bind(this);
-    
+  
 
     }
 
 
-    getMovies():void
-    {
-      this.fetchApiData.getAllMovies().subscribe((resp: any) => {
-        this.movies = resp;
-        localStorage.setItem('movies',JSON.stringify(resp));
-        console.log(this.movies);
-        return this.movies;
-      });
-    }
 
-    
-
-addFavMovie(movieID:string):void{
-  this.fetchApiData.addFavMovie(this.user.username,movieID).subscribe((result:any)=>{
-    localStorage.setItem('user',JSON.stringify(result));
-    this.user= result;
-  
-    this.snackBar.open('Movie was added to Favorites','OK',{duration:3000})
-  })
-  
-  
-  
-  }
-  
-  removeFavMovie(movieID:string):void{
-    this.fetchApiData.removeFavMovie(this.user.username,movieID).subscribe((result:any)=>{
-      localStorage.setItem('user',JSON.stringify(result));
-      this.user= result;
-      this.snackBar.open('Movie was removed from  Favorites','OK',{duration:3000})
-    })
-  
-   
-  
-  
-  }
-  
-  favStatus(movieID:string):void{
-      return this.user.favMovies.includes(movieID);
-  }
-  
   
   
 }

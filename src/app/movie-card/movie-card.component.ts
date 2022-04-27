@@ -27,11 +27,11 @@ export class MovieCardComponent implements OnInit {
     public router:Router, 
     public dialog: MatDialog,
     public snackBar:MatSnackBar,
-    public movieCard:MoviecardService,
+    public movieCardService:MoviecardService,
     ) { }
 
   ngOnInit(): void {
- this.movieCard.getMovies()
+ this.movieCardService.getMovies()
   
   }
 
