@@ -1,6 +1,6 @@
-<app-navbar></app-navbar>
+
 <div style="display: flex;">
-    <mat-card  style="flex: 1 1 auto;">
+    <mat-card >
         <mat-card-header>
         <mat-card-title>{{movie.title}}</mat-card-title>
             <mat-card-subtitle>Directed by: {{movie.director.name}}</mat-card-subtitle>
@@ -10,28 +10,28 @@
             <button
                 mat-button
                 color="primary"
-                (click)="getmovieGenre(movie._id)"
+                (click)="getmovieGenre()"
             >
                 Genre
             </button>
             <button
                 mat-button
                 color="primary"
-                (click)="getmovieDirector(movie._id)"
+                (click)="getmovieDirector()"
             >
                 Director
             </button>
             <button
                 mat-button
                 color="primary"
-                (click)="getSummary(movie._id)"
+                (click)="getSummary()"
             >
                 Summary
             </button>
 
 
 
-            <div *ngIf="favStatus(movie._id); then thenBlock else elseBlock"></div>
+            <div *ngIf="favStatus then thenBlock else elseBlock"></div>
       
     <ng-template #thenBlock>
         <button mat-icon-butto (click)="removeFavMovie(movie._id)">
