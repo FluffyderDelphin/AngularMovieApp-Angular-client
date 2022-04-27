@@ -16,8 +16,8 @@ import { MovieCardComponent } from '../movie-card/movie-card.component';
 export class MainViewComponent implements OnInit {
 
   movies: any[]=[];
-  string:any = localStorage.getItem('user');
-  user:any = JSON.parse(this.string);
+  userstring:any = localStorage.getItem('user');
+  user:any = JSON.parse(this.userstring);
   
     constructor(
       public fetchApiData:FetchApiDataService,

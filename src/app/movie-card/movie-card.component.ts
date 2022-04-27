@@ -34,7 +34,7 @@ export class MovieCardComponent implements OnInit {
 
 
 
-getmovieDirector(movieID:any):void{
+getmovieDirector():void{
   this.dialog.open(MovieDirectorViewComponent, {
     data: {
      name:this.movie.director.name,
@@ -47,7 +47,7 @@ getmovieDirector(movieID:any):void{
   });
 }
 
-getmovieGenre(movieID:any):void{
+getmovieGenre():void{
   console.log(this.movie.genre)
   this.dialog.open(MovieGenreViewComponent, {
     data: {
@@ -59,7 +59,7 @@ getmovieGenre(movieID:any):void{
   });
 }
 
-getSummary(movieID:any): void {
+getSummary(): void {
   this.dialog.open(MovieSummaryComponent, {
     data: {
       title: this.movie.title,
