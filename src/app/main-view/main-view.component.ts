@@ -6,6 +6,8 @@ import { MovieDirectorViewComponent } from '../movie-director-view/movie-directo
 import { MovieGenreViewComponent } from '../movie-genre-view/movie-genre-view.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
+import { MoviecardService } from '../moviecard.service';
+
 
 
 @Component({
@@ -22,6 +24,7 @@ export class MainViewComponent implements OnInit {
     constructor(
       public fetchApiData:FetchApiDataService,
       public snackBar:MatSnackBar,
+      public movieCardService: MoviecardService,
       ) { }
   
     ngOnInit(): void {

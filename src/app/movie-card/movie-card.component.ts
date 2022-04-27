@@ -6,6 +6,8 @@ import { MovieSummaryComponent } from '../movie-summary/movie-summary.component'
 import { MovieDirectorViewComponent } from '../movie-director-view/movie-director-view.component';
 import { MovieGenreViewComponent } from '../movie-genre-view/movie-genre-view.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MoviecardService } from '../moviecard.service';
+
 
 
 @Component({
@@ -25,10 +27,11 @@ export class MovieCardComponent implements OnInit {
     public router:Router, 
     public dialog: MatDialog,
     public snackBar:MatSnackBar,
+    public movieCard:MoviecardService,
     ) { }
 
   ngOnInit(): void {
- 
+ this.movieCard.getMovies()
   
   }
 
