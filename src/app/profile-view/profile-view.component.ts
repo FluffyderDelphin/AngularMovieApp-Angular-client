@@ -5,15 +5,19 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 import { UserUpdateComponent } from '../user-update/user-update.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { MovieSummaryComponent } from '../movie-summary/movie-summary.component';
+import { MovieDirectorViewComponent } from '../movie-director-view/movie-director-view.component';
+import { MovieGenreViewComponent } from '../movie-genre-view/movie-genre-view.component';
+
 @Component({
   selector: 'app-profile-view',
   templateUrl: './profile-view.component.html',
   styleUrls: ['./profile-view.component.scss']
 })
 export class ProfileViewComponent implements OnInit {
-   movies:any[]=[]
-   string:any = localStorage.getItem('user');
-   user:any = JSON.parse(this.string);
+    user:any
+    movies:any[]=[];
+
    favMovies:any[]=[];
    constructor(public dialog: MatDialog,
     public router:Router,
@@ -22,23 +26,23 @@ export class ProfileViewComponent implements OnInit {
 
 
     ngOnInit(): void {
-      this.getMovies();
+      this.getData();
       this.setFavoritesList();
+   
     
     }
   
-    getMovies():void
-  {
-    this.fetchApiData.getAllMovies().subscribe((resp: any) => {
-      this.movies = resp;
-      console.log(this.movies);
-      return this.movies;
-
-    });
-  }
+    getData():void {
+    let string:any = localStorage.getItem('user');
+    this.user = JSON.parse(string);
+ 
+    let moviestring:any=localStorage.getItem('movies')
+    this.movies=JSON.parse(moviestring);
+    }
+  
 
   setFavoritesList():any{
-    this.favMovies = this.movies.filter((m)=>
+    this.favMovies = this.movies.filter((m:any)=>
    {    return this.user.favMovies.includes(m._id)
   })
   console.log(this.favMovies);
@@ -69,4 +73,64 @@ export class ProfileViewComponent implements OnInit {
 
 
  }
+
+
+
+ getSummary(movieID:any): void {
+  let movie = this.movies.find(m=>{return m._id === movieID})
+  this.dialog.open(MovieSummaryComponent, {
+    data: {
+      title: movie.title,
+      imageurl: movie.imageurl,
+      description: movie.description,
+    },
+    width: '500px',
+    backdropClass: 'backdropBackground'
+  });
+
+ 
+}
+
+getmovieDirector(movieID:any):void{
+  let movie = this.movies.find(m=>{return m._id === movieID})
+  this.dialog.open(MovieDirectorViewComponent, {
+    data: {
+     name:movie.director.name,
+     bio:movie.director.bio,
+     birth:movie.director.birth,
+     death:movie.director.death
+    },
+    width: '500px',
+    backdropClass: 'backdropBackground'
+  });
+}
+
+getmovieGenre(movieID:any):void{
+  let movie = this.movies.find(m=>{return m._id === movieID})
+  console.log(movie.genre)
+  this.dialog.open(MovieGenreViewComponent, {
+    data: {
+    name:movie.genre.name,
+    description:movie.genre.description
+    },
+    width: '600px',
+    backdropClass: 'backdropBackground'
+  });
+}
+
+
+
+removeFavMovie(movieID:string):void{
+  this.fetchApiData.removeFavMovie(this.user.username,movieID).subscribe((result:any)=>{
+    localStorage.setItem('user',JSON.stringify(result));
+    this.user= result;
+    this.setFavoritesList();
+    this.snackBar.open('Movie was removed from  Favorites','OK',{duration:3000})
+  })
+
+
+
+
+ 
+}
 }

@@ -33,6 +33,7 @@ user:any = JSON.parse(this.string);
 {
   this.fetchApiData.getAllMovies().subscribe((resp: any) => {
     this.movies = resp;
+    localStorage.setItem('movies',JSON.stringify(resp));
     console.log(this.movies);
     return this.movies;
   });
