@@ -35,13 +35,12 @@ export class MovieCardComponent implements OnInit {
 
 
 getmovieDirector(movieID:any):void{
-  let movie = this.movies.find(m=>{return m._id === movieID})
   this.dialog.open(MovieDirectorViewComponent, {
     data: {
-     name:movie.director.name,
-     bio:movie.director.bio,
-     birth:movie.director.birth,
-     death:movie.director.death
+     name:this.movie.director.name,
+     bio:this.movie.director.bio,
+     birth:this.movie.director.birth,
+     death:this.movie.director.death
     },
     width: '500px',
     backdropClass: 'backdropBackground'
@@ -49,12 +48,11 @@ getmovieDirector(movieID:any):void{
 }
 
 getmovieGenre(movieID:any):void{
-  let movie = this.movies.find(m=>{return m._id === movieID})
-  console.log(movie.genre)
+  console.log(this.movie.genre)
   this.dialog.open(MovieGenreViewComponent, {
     data: {
-    name:movie.genre.name,
-    description:movie.genre.description
+    name:this.movie.genre.name,
+    description:this.movie.genre.description
     },
     width: '600px',
     backdropClass: 'backdropBackground'
@@ -62,12 +60,11 @@ getmovieGenre(movieID:any):void{
 }
 
 getSummary(movieID:any): void {
-  let movie = this.movies.find(m=>{return m._id === movieID})
   this.dialog.open(MovieSummaryComponent, {
     data: {
-      title: movie.title,
-      imageurl: movie.imageurl,
-      description: movie.description,
+      title: this.movie.title,
+      imageurl: this.movie.imageurl,
+      description: this.movie.description,
     },
     width: '500px',
     backdropClass: 'backdropBackground'
