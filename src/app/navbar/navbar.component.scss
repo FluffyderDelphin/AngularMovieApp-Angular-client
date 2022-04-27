@@ -2,10 +2,12 @@
     color: white;
     background-color: #4294f2;
     padding: 1.2rem 2rem;
+    width: 100%;
 
 
   }
   .listitem{
+    
       color: #fff;
   }
   .viewList{
@@ -18,5 +20,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 1.2rem;
     margin: 0 auto;
 }

@@ -1,0 +1,5 @@
+<app-navbar></app-navbar>
+<div style="display: flex;">
+  <app-movie-card *ngFor="let movie of movies;" style="flex: 1 1 auto;" [movie]="movie" [addFavMovie]="addFavMovie"
+    [removeFavMovie]="removeFavMovie" [favStatus]="favStatus(movie._id)"></app-movie-card>
+</div>

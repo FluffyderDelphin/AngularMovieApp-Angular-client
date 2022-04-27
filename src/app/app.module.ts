@@ -31,10 +31,11 @@ import { MovieDirectorViewComponent } from './movie-director-view/movie-director
 import { MovieGenreViewComponent } from './movie-genre-view/movie-genre-view.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MovieUserFavoriteComponent } from './movie-user-favorite/movie-user-favorite.component';
+import { MainViewComponent } from './main-view/main-view.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
-  { path: 'movies', component: MovieCardComponent },
+  { path: 'movies', component: MainViewComponent},
   { path: 'profile', component: ProfileViewComponent },
   { path: 'movies/:id', component: MovieSummaryComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
@@ -54,6 +55,7 @@ const appRoutes: Routes = [
     MovieGenreViewComponent,
     NavbarComponent,
     MovieUserFavoriteComponent,
+    MainViewComponent,
   
   ],
   imports: [
