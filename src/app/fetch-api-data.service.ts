@@ -107,10 +107,10 @@ export class FetchApiDataService {
       .pipe(catchError(this.handleError));
   }
 
-  deleteUser(user: string): Observable<any> {
+  deleteUser(user: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .delete<string>(apiUrl + 'users/' + user, {
+      .delete<any>(apiUrl + 'users/' + user, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
