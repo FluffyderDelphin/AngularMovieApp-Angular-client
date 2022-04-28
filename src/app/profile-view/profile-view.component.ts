@@ -17,7 +17,7 @@ import { MoviecardService } from '../moviecard.service';
 })
 export class ProfileViewComponent implements OnInit {
     user:any
-    movies:any[]=[];
+ 
 
  
    constructor(public dialog: MatDialog,
@@ -28,20 +28,20 @@ export class ProfileViewComponent implements OnInit {
 
 
     ngOnInit(): void {
-      this.getData();
-      // this.movieCardService.setFavoritesList()
+      // this.getData();
+      this.movieCardService.getMovies();
   
    
     
     }
   
-    getData():void {
-    let string:any = localStorage.getItem('user');
-    this.user = JSON.parse(string);
+    // getData():void {
+    // let string:any = localStorage.getItem('user');
+    // this.user = JSON.parse(string);
  
-    let moviestring:any=localStorage.getItem('movies')
-    this.movies=JSON.parse(moviestring);
-    }
+    // let moviestring:any=localStorage.getItem('movies')
+    // this.movies=JSON.parse(moviestring);
+    // }
   
 
 
@@ -71,47 +71,6 @@ export class ProfileViewComponent implements OnInit {
 
 
 
- getSummary(movieID:any): void {
-  let movie = this.movies.find(m=>{return m._id === movieID})
-  this.dialog.open(MovieSummaryComponent, {
-    data: {
-      title: movie.title,
-      imageurl: movie.imageurl,
-      description: movie.description,
-    },
-    width: '500px',
-    backdropClass: 'backdropBackground'
-  });
-
- 
-}
-
-getmovieDirector(movieID:any):void{
-  let movie = this.movies.find(m=>{return m._id === movieID})
-  this.dialog.open(MovieDirectorViewComponent, {
-    data: {
-     name:movie.director.name,
-     bio:movie.director.bio,
-     birth:movie.director.birth,
-     death:movie.director.death
-    },
-    width: '500px',
-    backdropClass: 'backdropBackground'
-  });
-}
-
-getmovieGenre(movieID:any):void{
-  let movie = this.movies.find(m=>{return m._id === movieID})
-  console.log(movie.genre)
-  this.dialog.open(MovieGenreViewComponent, {
-    data: {
-    name:movie.genre.name,
-    description:movie.genre.description
-    },
-    width: '600px',
-    backdropClass: 'backdropBackground'
-  });
-}
 
 
 
