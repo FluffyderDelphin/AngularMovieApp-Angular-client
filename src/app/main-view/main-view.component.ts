@@ -27,9 +27,10 @@ export class MainViewComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.movieCardService.getMovies();
     if (!localStorage.getItem('user')) {
       this.router.navigate(['welcome']);
+    } else {
+      this.movieCardService.getMovies();
     }
   }
 }
