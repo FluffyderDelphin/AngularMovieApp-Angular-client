@@ -25,6 +25,7 @@ export class MoviecardService {
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
+      this.setuser();
       this.setFavoritesList();
       localStorage.setItem('movies', JSON.stringify(resp));
       console.log(this.movies);
@@ -68,5 +69,10 @@ export class MoviecardService {
     });
     console.log(this.favMovies);
     return this.favMovies;
+  }
+
+  setuser() {
+    let userString: any = localStorage.getItem('user');
+    this.user = JSON.parse(userString);
   }
 }

@@ -35,7 +35,7 @@ export class UserUpdateComponent implements OnInit {
       (result: any) => {
         this.dialogRef.close();
         this.snackBar.open(
-          `${result.user.username} sucessfully updated Please Login.`,
+          `${result.username} sucessfully updated Please Login.`,
           'OK',
           {
             duration: 2000,
