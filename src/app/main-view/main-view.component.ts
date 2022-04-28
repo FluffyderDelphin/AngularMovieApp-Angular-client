@@ -8,34 +8,23 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
 import { MoviecardService } from '../moviecard.service';
 
-
-
 @Component({
   selector: 'app-main-view',
   templateUrl: './main-view.component.html',
-  styleUrls: ['./main-view.component.scss']
+  styleUrls: ['./main-view.component.scss'],
 })
 export class MainViewComponent implements OnInit {
+  movies: any[] = [];
+  userstring: any = localStorage.getItem('user');
+  user: any = JSON.parse(this.userstring);
 
-  movies: any[]=[];
-  userstring:any = localStorage.getItem('user');
-  user:any = JSON.parse(this.userstring);
-  
-    constructor(
-      public fetchApiData:FetchApiDataService,
-      public snackBar:MatSnackBar,
-      public movieCardService: MoviecardService,
-      ) { }
-  
-    ngOnInit(): void {
-      this.movieCardService.getMovies()
-    
-  
+  constructor(
+    public fetchApiData: FetchApiDataService,
+    public snackBar: MatSnackBar,
+    public movieCardService: MoviecardService
+  ) {}
 
-    }
-
-
-
-  
-  
+  ngOnInit(): void {
+    this.movieCardService.getMovies();
+  }
 }

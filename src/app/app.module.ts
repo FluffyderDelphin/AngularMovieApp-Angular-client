@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
-
-
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,8 +10,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
-
-
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,7 +31,7 @@ import { MainViewComponent } from './main-view/main-view.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
-  { path: 'movies', component: MainViewComponent},
+  { path: 'movies', component: MainViewComponent },
   { path: 'profile', component: ProfileViewComponent },
   { path: 'movies/:id', component: MovieSummaryComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
@@ -56,7 +52,6 @@ const appRoutes: Routes = [
     NavbarComponent,
     MovieUserFavoriteComponent,
     MainViewComponent,
-  
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -71,9 +66,9 @@ const appRoutes: Routes = [
     MatCardModule,
     MatFormFieldModule,
     MatSnackBarModule,
-    MatIconModule
+    MatIconModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
