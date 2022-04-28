@@ -8,6 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MovieSummaryComponent } from '../movie-summary/movie-summary.component';
 import { MovieDirectorViewComponent } from '../movie-director-view/movie-director-view.component';
 import { MovieGenreViewComponent } from '../movie-genre-view/movie-genre-view.component';
+import { MoviecardService } from '../moviecard.service';
 
 @Component({
   selector: 'app-profile-view',
@@ -18,16 +19,18 @@ export class ProfileViewComponent implements OnInit {
     user:any
     movies:any[]=[];
 
-   favMovies:any[]=[];
+ 
    constructor(public dialog: MatDialog,
     public router:Router,
     public fetchApiData:FetchApiDataService,    
-    public snackBar: MatSnackBar) { }
+    public snackBar: MatSnackBar,
+    public movieCardService:MoviecardService,) { }
 
 
     ngOnInit(): void {
       this.getData();
-      this.setFavoritesList();
+      // this.movieCardService.setFavoritesList()
+  
    
     
     }
@@ -40,14 +43,6 @@ export class ProfileViewComponent implements OnInit {
     this.movies=JSON.parse(moviestring);
     }
   
-
-  setFavoritesList():any{
-    this.favMovies = this.movies.filter((m:any)=>
-   {    return this.user.favMovies.includes(m._id)
-  })
-  console.log(this.favMovies);
-  return this.favMovies;
-  }
 
 
 
@@ -120,17 +115,7 @@ getmovieGenre(movieID:any):void{
 
 
 
-removeFavMovie(movieID:string):void{
-  this.fetchApiData.removeFavMovie(this.user.username,movieID).subscribe((result:any)=>{
-    localStorage.setItem('user',JSON.stringify(result));
-    this.user= result;
-    this.setFavoritesList();
-    this.snackBar.open('Movie was removed from  Favorites','OK',{duration:3000})
-  })
 
 
 
-
- 
-}
 }

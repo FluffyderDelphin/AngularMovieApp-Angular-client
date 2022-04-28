@@ -24,7 +24,7 @@ Delete
 </button>
 
 
-<mat-card *ngFor="let movie of favMovies;" style="flex: 1 1 auto;">
+<mat-card *ngFor="let movie of movieCardService.favMovies;" style="flex: 1 1 auto;">
     <mat-card-header>
     <mat-card-title>{{movie.title}}</mat-card-title>
         <mat-card-subtitle>Directed by: {{movie.director.name}}</mat-card-subtitle>
@@ -58,7 +58,7 @@ Delete
 
   
 
-    <button mat-icon-butto (click)="removeFavMovie(movie._id)">
+    <button mat-icon-butto (click)="movieCardService.removeFavMovie(movie._id)">
         <mat-icon>close</mat-icon>
     </button>
 
