@@ -24,8 +24,8 @@ export class MoviecardService {
 
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
-      this.setFavoritesList();
       this.movies = resp;
+      this.setFavoritesList();
       localStorage.setItem('movies', JSON.stringify(resp));
       console.log(this.movies);
       return this.movies;

@@ -16,10 +16,10 @@ export class UserUpdateComponent implements OnInit {
   string: any = localStorage.getItem('user');
   user: any = JSON.parse(this.string);
   @Input() userData = {
-    username: '',
+    username: this.user.username,
     password: '',
-    email: '',
-    birthday: new Date(),
+    email: this.user.email,
+    birthday: this.user.birthday.substr(0, 10),
   };
   constructor(
     public fetchApiData: FetchApiDataService,
