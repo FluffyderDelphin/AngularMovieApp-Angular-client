@@ -13,68 +13,51 @@ import { MoviecardService } from '../moviecard.service';
 @Component({
   selector: 'app-profile-view',
   templateUrl: './profile-view.component.html',
-  styleUrls: ['./profile-view.component.scss']
+  styleUrls: ['./profile-view.component.scss'],
 })
 export class ProfileViewComponent implements OnInit {
-    user:any
- 
+  user: any;
 
- 
-   constructor(public dialog: MatDialog,
-    public router:Router,
-    public fetchApiData:FetchApiDataService,    
+  constructor(
+    public dialog: MatDialog,
+    public router: Router,
+    public fetchApiData: FetchApiDataService,
     public snackBar: MatSnackBar,
-    public movieCardService:MoviecardService,) { }
+    public movieCardService: MoviecardService
+  ) {}
 
-
-    ngOnInit(): void {
-      // this.getData();
-      this.movieCardService.getMovies();
-  
-   
-    
-    }
-  
-    // getData():void {
-    // let string:any = localStorage.getItem('user');
-    // this.user = JSON.parse(string);
- 
-    // let moviestring:any=localStorage.getItem('movies')
-    // this.movies=JSON.parse(moviestring);
-    // }
-  
-
-
-
- openUserUpdateDialog():void{
-   this.dialog.open(UserUpdateComponent,{
-     width:'300px'
-   })
- }
-
- deleteUser():void{
-   if(confirm('Delete Account ?')) {
-
-
- this.fetchApiData.deleteUser(this.user._id).subscribe((result:any)=>{
-   localStorage.clear();
-   this.router.navigate(['welcome'])
- },(result:any)=>{
-   this.snackBar.open('User was not deleted','OK',{
-     duration:2000
-   })
- })
+  ngOnInit(): void {
+    this.getData();
+    this.movieCardService.getMovies();
   }
 
+  getData(): void {
+    let userstring: any = localStorage.getItem('user');
+    this.user = JSON.parse(userstring);
 
- }
+    // let moviestring:any=localStorage.getItem('movies')
+    // this.movies=JSON.parse(moviestring);
+  }
 
+  openUserUpdateDialog(): void {
+    this.dialog.open(UserUpdateComponent, {
+      width: '300px',
+    });
+  }
 
-
-
-
-
-
-
-
+  deleteUser(): void {
+    if (confirm('Delete Account ?')) {
+      this.fetchApiData.deleteUser(this.user._id).subscribe(
+        (result: any) => {
+          localStorage.clear();
+          this.router.navigate(['welcome']);
+        },
+        (result: any) => {
+          this.snackBar.open('User was not deleted', 'OK', {
+            duration: 2000,
+          });
+        }
+      );
+    }
+  }
 }
