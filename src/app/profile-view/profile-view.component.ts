@@ -29,6 +29,9 @@ export class ProfileViewComponent implements OnInit {
   ngOnInit(): void {
     this.getData();
     this.movieCardService.getMovies();
+    if (!localStorage.getItem('user')) {
+      this.router.navigate(['welcome']);
+    }
   }
 
   getData(): void {

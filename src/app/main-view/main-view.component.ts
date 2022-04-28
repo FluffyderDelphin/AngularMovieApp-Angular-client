@@ -7,6 +7,7 @@ import { MovieGenreViewComponent } from '../movie-genre-view/movie-genre-view.co
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
 import { MoviecardService } from '../moviecard.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-view',
@@ -21,10 +22,14 @@ export class MainViewComponent implements OnInit {
   constructor(
     public fetchApiData: FetchApiDataService,
     public snackBar: MatSnackBar,
-    public movieCardService: MoviecardService
+    public movieCardService: MoviecardService,
+    public router: Router
   ) {}
 
   ngOnInit(): void {
     this.movieCardService.getMovies();
+    if (!localStorage.getItem('user')) {
+      this.router.navigate(['welcome']);
+    }
   }
 }
