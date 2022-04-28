@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<div style="display: flex;"> 
+<div style="display: flex; overflow-x: scroll;"> 
     <app-movie-card *ngFor="let movie of movieCardService.movies;" style="flex: 1 1 auto;" [movie]="movie" [addFavMovie]="movieCardService.addFavMovie" 
     [removeFavMovie]="movieCardService.removeFavMovie" 
     [favStatus]="movieCardService.favStatus(movie._id)"></app-movie-card>
