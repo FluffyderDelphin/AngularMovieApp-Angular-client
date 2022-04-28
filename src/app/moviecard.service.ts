@@ -32,15 +32,15 @@ export class MoviecardService {
   console.log(this.movies);
   return this.movies;
   });
+  this.setFavoritesList();
   }
   
 
   addFavMovie(movieID:string):void{
     this.fetchApiData.addFavMovie(this.user.username,movieID).subscribe((result:any)=>{
       localStorage.setItem('user',JSON.stringify(result));
-      this.setFavoritesList();
       this.user= result;
-    
+      this.setFavoritesList();
       this.snackBar.open('Movie was added to Favorites','OK',{duration:3000})
     })
     
@@ -51,8 +51,8 @@ export class MoviecardService {
   removeFavMovie(movieID: string): void {
     this.fetchApiData.removeFavMovie(this.user.username, movieID).subscribe((result: any) => {
     localStorage.setItem('user', JSON.stringify(result));
-    this.setFavoritesList();
     this.user = result;
+    this.setFavoritesList();
     this.snackBar.open('Movie was removed from Favorites', 'OK', { duration: 3000 })
     })
     }
