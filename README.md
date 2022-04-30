@@ -10,6 +10,7 @@ It Requires the user to Register a Profile and to Log In. After that he is allow
 ## Tech Used
 - Angular 
 - Typescript 
+- compodoc
 - own Movie Api: https://alexandersmovieapp.herokuapp.com/
 
 
