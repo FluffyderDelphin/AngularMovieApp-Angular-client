@@ -5,6 +5,7 @@ This App displays Movies from my Movie Api [Movie Api](https://github.com/Fluffy
 It Requires the user to Register a Profile and to Log In. After that he is allows to view the Movies, add or remove then to Favorites and also View and Edit his Profile.
 
 ## Links
+- gh Pages Site : https://fluffyderdelphin.github.io/AngularMovieApp-Angular-client/welcome
 
 
 ## Tech Used
