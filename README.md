@@ -4,6 +4,11 @@
 This App displays Movies from my Movie Api [Movie Api] (https://github.com/FluffyderDelphin/Movie_App_Project) in a List.
 It Requires the user to Register a Profile and to Log In. After that he is allows to view the Movies, add or remove then to Favorites and also View and Edit his Profile.
 
+## Tech Used
+- Angular 
+- Typescript 
+- own Movie Api: https://alexandersmovieapp.herokuapp.com/
+
 
 
 ### Generated Content 
