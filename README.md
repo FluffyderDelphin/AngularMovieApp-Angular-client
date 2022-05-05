@@ -1,6 +1,6 @@
 # Angular MovieApp AngularClient
 
-<img src="src\assets\images\screenshot.jpg" alt="Screenshot" width="600"/>
+<img src="src\assets\images\screenshot.jpg" alt="Screenshot" width="1200"/>
 
 ## What is the "Angular MovieApp" ?
 
