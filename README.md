@@ -1,23 +1,42 @@
 # Angular MovieApp AngularClient
 
+<img src="src\assets\images\screenshot.jpg" alt="Screenshot" width="400"/>
+
 ## What is the "Angular MovieApp" ?
+
 This App displays Movies from my Movie Api [Movie Api](https://github.com/FluffyderDelphin/Movie_App_Project) in a List.
 It Requires the user to Register a Profile and to Log In. After that he is allows to view the Movies, add or remove then to Favorites and also View and Edit his Profile.
 
 ## Links
+
 - gh Pages Site : https://fluffyderdelphin.github.io/AngularMovieApp-Angular-client/welcome
 - Trello Board : https://trello.com/b/ebMQXzcE/angular-movieapp
 
-
 ## Tech Used
-- Angular 
-- Typescript 
+
+- Angular
+- Typescript
 - compodoc
 - own Movie Api: https://alexandersmovieapp.herokuapp.com/
 
+## Planning
 
+# Trello Board
 
-### Generated Content 
+First I planned out the Key Features I needed and how diffucult they might be to implement.
+
+<img src="src\assets\images\Trello_Board.PNG" alt="Screenshot" width="400"/>
+
+# User Flows
+
+Then I create User flows to help visualize how the App has to work.
+
+<img src="src\assets\images\Flow1.PNG" alt="Screenshot" width="400"/>
+<img src="src\assets\images\Flow2.PNG" alt="Screenshot" width="400"/>
+<img src="src\assets\images\Flow3.PNG" alt="Screenshot" width="400"/>
+
+### Generated Content
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
 
 ## Development server
