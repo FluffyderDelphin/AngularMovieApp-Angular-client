@@ -6,6 +6,7 @@ It Requires the user to Register a Profile and to Log In. After that he is allow
 
 ## Links
 - gh Pages Site : https://fluffyderdelphin.github.io/AngularMovieApp-Angular-client/welcome
+- Trello Board : https://trello.com/b/ebMQXzcE/angular-movieapp
 
 
 ## Tech Used
